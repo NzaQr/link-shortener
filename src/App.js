@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
-
 import "./App.css";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       justify="center"
       alignItems="center"
     >
-      <h1> Link Generator</h1>
+      <Search />
     </Grid>
   );
 }
