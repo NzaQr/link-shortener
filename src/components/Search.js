@@ -3,16 +3,26 @@ import { TextField, Button, LinearProgress } from "@material-ui/core";
 import shrtcode from "../api/shrtcode";
 import "./Search.css";
 
+const HTTP_URL_VALIDATOR_REGEX = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+
 const Search = () => {
   const [link, setLink] = useState("");
   const [short, setShort] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const validateURL = (string) => {
+    return string.match(HTTP_URL_VALIDATOR_REGEX);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    getLink();
-    setLink("");
-    setIsLoading(!isLoading);
+    if (validateURL(link)) {
+      getLink();
+      setLink("");
+      setIsLoading(!isLoading);
+    } else {
+      setShort("Please input a valid URL");
+    }
   };
 
   const getLink = async () => {
