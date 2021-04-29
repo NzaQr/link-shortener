@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TextField, Button, LinearProgress } from "@material-ui/core";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 import shrtcode from "../api/shrtcode";
 import "./Search.css";
 
@@ -9,6 +10,8 @@ const Search = () => {
   const [link, setLink] = useState("");
   const [short, setShort] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [copySuccess, setCopySuccess] = useState("");
+  const inputRef = useRef(null);
 
   const validateURL = (string) => {
     return string.match(HTTP_URL_VALIDATOR_REGEX);
@@ -21,7 +24,7 @@ const Search = () => {
       setLink("");
       setIsLoading(!isLoading);
     } else {
-      setShort("Please enter a valid URL");
+      setShort("Not a valid URL");
     }
   };
 
@@ -36,6 +39,13 @@ const Search = () => {
         console.error(error);
       });
   };
+
+  function copyToClipboard(e) {
+    inputRef.current.select();
+    document.execCommand("copy");
+    e.target.focus();
+    setCopySuccess("Copied!");
+  }
 
   return (
     <>
@@ -61,8 +71,24 @@ const Search = () => {
         )}
         {isLoading && <LinearProgress />}
       </form>
-      <div className="new-link">
-        {short && <div>Your short link: {short}</div>}
+      <div>
+        {short && (
+          <div className="new-link-container">
+            <input className="new-link" value={short} ref={inputRef}></input>
+            <div className="copy-container">
+              <FileCopyIcon
+                style={{
+                  position: "relative",
+                  left: "15px",
+                  top: "5px",
+                  cursor: "pointer",
+                }}
+                onClick={copyToClipboard}
+              />
+              <div className="copied">{copySuccess}</div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
