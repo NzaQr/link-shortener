@@ -21,7 +21,7 @@ const Search = () => {
       setLink("");
       setIsLoading(!isLoading);
     } else {
-      setShort("Please input a valid URL");
+      setShort("Please enter a valid URL");
     }
   };
 
@@ -41,9 +41,9 @@ const Search = () => {
     <>
       <form onSubmit={(event) => handleSubmit(event)}>
         <TextField
+          color="secondary"
           style={{ marginBottom: "20px" }}
-          className="textField"
-          label="Input Your Link"
+          label="Enter the link here"
           variant="outlined"
           value={link}
           onChange={(event) => setLink(event.target.value)}
@@ -51,7 +51,7 @@ const Search = () => {
         {!isLoading && (
           <Button
             style={{ marginBottom: "20px" }}
-            className="button"
+            size="large"
             onClick={(event) => handleSubmit(event)}
             variant="contained"
             color="primary"
@@ -61,7 +61,9 @@ const Search = () => {
         )}
         {isLoading && <LinearProgress />}
       </form>
-      {short && <div>Your short link: {short}</div>}
+      <div className="new-link">
+        {short && <div>Your short link: {short}</div>}
+      </div>
     </>
   );
 };

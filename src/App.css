@@ -1,3 +1,20 @@
+body {
+  margin: 0;
+}
+
 .App {
   height: 100vh;
+  font-family: "Lato", sans-serif;
+  background-color: #ffc13b;
+}
+
+.content-container {
+  padding: 2em;
+  background-color: #f5f0e1;
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+  color: #293241;
 }
