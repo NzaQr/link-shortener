@@ -12,9 +12,14 @@ body {
   padding: 2em;
   background-color: #f5f0e1;
   border-radius: 20px;
+  width: 20%;
 }
 
 .title {
   text-align: center;
   color: #293241;
+}
+
+h3.title {
+  text-align: left;
 }
