@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { TextField, Button, LinearProgress } from "@material-ui/core";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import shrtcode from "../api/shrtcode";
-import "./Search.css";
+import "./Shortener.css";
 
 const HTTP_URL_VALIDATOR_REGEX = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
 
