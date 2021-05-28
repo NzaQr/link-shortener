@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import "./App.css";
 import Shortener from "./components/Shortener";
@@ -17,14 +16,8 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <MuiThemeProvider theme={theme}>
-      <Grid
-        className="App"
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
+    <div className="App">
+      <MuiThemeProvider theme={theme}>
         <div className="content-container">
           <h1 className="title">Link Shortener</h1>
           <Shortener />
@@ -32,8 +25,8 @@ function App() {
 
           <SaveSite />
         </div>
-      </Grid>
-    </MuiThemeProvider>
+      </MuiThemeProvider>
+    </div>
   );
 }
 

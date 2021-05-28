@@ -1,18 +1,19 @@
 body {
   margin: 0;
+  background-color: #ffc13b;
 }
 
 .App {
   height: 100vh;
   font-family: "Lato", sans-serif;
-  background-color: #ffc13b;
 }
 
 .content-container {
+  margin: 1em;
   padding: 2em;
   background-color: #f5f0e1;
   border-radius: 20px;
-  width: 20%;
+  max-width: 100%;
 }
 
 .title {
@@ -22,4 +23,18 @@ body {
 
 h3.title {
   text-align: left;
+}
+
+@media (min-width: 800px) {
+  .content-container {
+    margin: 3rem auto;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-container {
+    margin: 3rem auto;
+    max-width: 25%;
+  }
 }
